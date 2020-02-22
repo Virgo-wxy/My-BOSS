@@ -1,0 +1,113 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" type="text/css" href="{% static  'css/bootstrap.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <style type="text/css">
+        li>a{
+            color: black;
+        }
+        a:hover{
+            color: orangered;
+        }
+	</style>
+
+</head>
+<body>
+<div class="container">
+<!-- 导航栏 -->
+    <nav class="navbar navbar-inverse" role="navigation" id="navbar-example" style="padding-left: 100px">
+            <div class="navbar-header">
+                <!-- 字体图标 -->
+                <a class="navbar-brand" href="{% url 'MyBoss:index' %}" style="color: #d58512">猎聘</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav">
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                           全国 <b class="caret"></b>
+                        </a>
+                        <!-- 下拉菜单项 -->
+                        <ul class="dropdown-menu" >
+                            <li><a href="{% url 'MyBoss:local_bj' %}">北京</a></li>
+                            <li><a href="{% url 'MyBoss:local_sh' %}">上海</a></li>
+                            <li><a href="{% url 'MyBoss:local_gz' %}">广州</a></li>
+                            <li><a href="{% url 'MyBoss:local_sz' %}">深圳</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{% url 'MyBoss:liepin' %}">职位<span class="badge" style="background-color: red;">new</span></a></li>
+                    <li><a href="#">社区</a></li>
+                    <li><a href="{% url 'MyBoss:liepin_overseas' %}">海外招聘<span class="badge" style="background-color: red">new</span></a></li>
+                    <li style="margin-left: 250px"><a href="#">注册</a></li>
+                    <li><a href="#">登录</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="#">手机猎聘</a></li>
+                </ul>
+            </div>
+    </nav>
+<!-- ----------------------------------------------------------------- -->
+    <div class="row">
+        <div class="col-md-9">
+            <img src="{% static 'image/s2.png' %}" alt="" width="100%">
+        </div>
+        <div class="col-md-3">
+            <img src="{% static 'image/s4.jpg' %}" alt="" width="100%">
+            <hr>
+            <img src="{% static 'image/s6.png' %}" alt="" width="100%">
+            <hr>
+            <img src="{% static 'image/s5.png' %}" alt="" width="100%">
+            <hr>
+        </div>
+    </div>
+    <h3>合作媒体
+        <span style="float: right;font-size: 14px">
+            <a href="" >我要在这里出现</a>
+            &nbsp;&nbsp;&nbsp;
+            <a href="" >更多内容</a>
+        </span>
+    </h3>
+    <hr>
+        {% for foo in result %}
+            <ul class="list-group" style="float:left; margin-left: 15px ;width: 270px;height: 270px">
+                <li class="list-group-item">
+                    <ul style="height: 230px">
+                        <a href="{% url 'MyBoss:company_detail' %}"><li class="list-unstyled"><h4>{{ foo.title }}</h4></li></a>
+
+                        <li><a href="">{{ foo.name1 }}</a></li>
+                        ----------------------------------------
+                        <li><a href="">{{ foo.name2 }}</a></li>
+                        ----------------------------------------
+                        <li><a href="">{{ foo.name3 }}</a></li>
+                        ----------------------------------------
+                        <li><a href="">{{ foo.name4 }}</a></li>
+                        ----------------------------------------
+                    </ul>
+                </li>
+            </ul>
+    {% endfor %}
+<p>
+    热门城市：
+    <a href="">北京招聘</a>&nbsp;&nbsp;
+    <a href="">上海招聘</a>&nbsp;&nbsp;
+    <a href="">广州招聘</a>&nbsp;&nbsp;
+    <a href="">深圳招聘</a>&nbsp;&nbsp;
+    <a href="">南京招聘</a>&nbsp;&nbsp;
+    <a href="">杭州招聘</a>&nbsp;&nbsp;
+    <a href="">天津招聘</a>&nbsp;&nbsp;
+    <a href="">青岛招聘</a>&nbsp;&nbsp;
+    <a href="">成都招聘</a>&nbsp;&nbsp;
+    <a href="">重庆招聘</a>&nbsp;&nbsp;
+    <a href="">武汉招聘</a>&nbsp;&nbsp;
+    <a href="">更多城市招聘</a>
+</p>
+</div>
+<hr>
+<p style="text-align: center">京ICP备09083200号 合字B2-20160007 人才服务许可证:120116174002号   京公网安备 11010502035189号</p>
+<p style="text-align: center">Copyright © 2006-2018 liepin.com All Rights Reserved</p>
+</body>
+</html>

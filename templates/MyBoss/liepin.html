@@ -1,0 +1,91 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static  'css/bootstrap.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <title>分页</title>
+
+    <style type="text/css">
+        table td, table th {
+            border: 1px solid #cad9ea;
+        }
+        table thead th {
+            background-color: #CCE8EB;
+            width: 100px;
+        }
+        tbody tr>td:nth-child(odd) {
+            background: #fff;
+        }
+        tbody tr>td:nth-child(even) {
+            background: #F5FAFA;
+        }
+
+    </style>
+</head>
+<h2 style="text-align: center">职位
+    <p style="margin-left: 1000px;font-size: 18px">{{ local }}
+        共：&nbsp;<span style="color: red">{{ count }}</span> &nbsp;个职位
+    </p>
+</h2>
+<p>
+<h3 style="margin-left: 150px">
+    <a href="{% url 'MyBoss:liepin' %}">全部职位</a>
+    <<< 学历要求:
+    &nbsp;&nbsp;<a href="{% url 'MyBoss:condition_bx' %}">不限</a>
+    &nbsp;&nbsp;<a href="{% url 'MyBoss:condition_dz' %}">大专</a>
+    &nbsp;&nbsp;<a href="{% url 'MyBoss:condition_bk' %}">本科</a>
+    &nbsp;&nbsp;<a href="{% url 'MyBoss:condition_ss' %}">硕士</a>
+</h3>
+</p>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>职位</th>
+            <th>薪资</th>
+            <th>地点</th>
+            <th>发布时间</th>
+            <th>招聘要求</th>
+            <th>工作经验</th>
+        </tr>
+        </thead>
+        {% for book in books %}
+            <tbody>
+            <tr>
+                <td>{{ book.title }}</td>
+                <td>{{ book.pay }}</td>
+                <td>{{ book.site }}</td>
+                <td>{{ book.release_time }}</td>
+                <td>{{ book.condition }}</td>
+                <td>{{ book.work_time }}</td>
+            </tr>
+            </tbody>
+        {% endfor %}
+    </table>
+</div>
+
+{# 实现分页标签的代码 #}
+{# 这里使用 bootstrap 渲染页面 #}
+<div id="pages" class="text-center">
+    <nav>
+        <ul class="pagination">
+            <li class="step-links">
+                {% if books.has_previous %}
+                    <a class='active' href="?page={{ books.previous_page_number }}">上一页</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ books.number }} of {{ books.paginator.num_pages }}</span>
+
+                {% if books.has_next %}
+                    <a class='active' href="?page={{ books.next_page_number }}">下一页</a>
+                {% endif %}
+            </li>
+        </ul>
+    </nav>
+</div>
+</body>
+</html>

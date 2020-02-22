@@ -1,0 +1,34 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>海外招聘</title>
+    <link rel="stylesheet" type="text/css" href="{% static  'css/bootstrap.css' %}">
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <style>
+        a:hover{
+            color:orange;
+        }
+    </style>
+</head>
+<body>
+<h2 style="text-align: center">海外招聘</h2>
+<div class="container">
+    <hr>
+    {% for foo in image %}
+            <ul class="list-group" style="float:left; margin-left: 15px ;width: 270px;height: 270px">
+                <li class="list-group-item">
+                    <ul class="list-unstyled" style="height: 230px;box-shadow: 4px 3px 6px #c0c0c0">
+                        <a href="https://www/baidu.com"><li><img src="{{ foo.company_logo }}" alt=""></li></a>
+                        <a href="{% url 'MyBoss:company_detail' %}"><li><h4>{{ foo.company_title }}</h4></li></a>
+                        <li>{{ foo.position1 }}</li>
+                        <li>{{ foo.position2 }}</li>
+                    </ul>
+                </li>
+            </ul>
+    {% endfor %}
+</div>
+</body>
+</html>

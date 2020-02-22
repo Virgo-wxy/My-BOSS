@@ -1,0 +1,431 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+	<script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+	<script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <style type="text/css">
+        .thumbnail{
+            box-shadow: 3px 3px 6px #c0c0c0
+        }
+        h2{
+            text-shadow: 6px 2px 6px #c0c0c0;
+        }
+        span {
+            font-size: 16px;
+            color: white;
+            color:#dbdbdb;
+        }
+
+        .col-md-3 a {
+            color: black;
+
+        }
+
+        .col-md-3 li {
+            background-color: #f5f5f5;
+        }
+
+        a:hover {
+            color: orange;
+            text-decoration: none;
+        }
+
+        p > a {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-inverse" role="navigation" id="navbar-example" style="padding-left: 100px">
+        <div class="navbar-header">
+            <!-- 字体图标 -->
+            <a class="navbar-brand" href="#" style="color: #d58512">猎聘</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        全国 <b class="caret"></b>
+                    </a>
+                    <!-- 下拉菜单项 -->
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'MyBoss:local_bj' %}">北京</a></li>
+                        <li><a href="{% url 'MyBoss:local_sh' %}">上海</a></li>
+                        <li><a href="{% url 'MyBoss:local_gz' %}">广州</a></li>
+                        <li><a href="{% url 'MyBoss:local_sz' %}">深圳</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'MyBoss:liepin' %}">职位<span class="badge" style="background-color: red;">new</span></a>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">
+                        分析 <b class="caret"></b>
+                    </a>
+                    <!-- 下拉菜单项 -->
+                    <ul class="dropdown-menu">
+                        <li><a href="{% url 'MyBoss:test' %}">查看城市分布比例</a></li>
+                        <li><a href="{% url 'MyBoss:test2' %}">查看学历要求比例</a></li>
+                    </ul>
+                </li>
+                <li><a href="{% url 'MyBoss:liepin_community' %}">社区</a></li>
+                <li><a href="{% url 'MyBoss:liepin_overseas' %}">海外招聘<span class="badge" style="background-color: red">new</span></a>
+                </li>
+                <li style="margin-left: 100px"><a href="#">我是猎头</a></li>
+                <li><a href="#">我是企业HR</a></li>
+                <li><a href="#">|</a></li>
+                <li><a href="#" data-toggle="modal" data-target="#myModal">手机猎聘</a></li>
+{#                模态框#}
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true" >
+                    <div class="modal-dialog"style="margin-left: 970px;margin-top: 60px">
+                        <div class="modal-content" style="width: 310px">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel" style="text-align: center">机会在手，求职信息实时掌握</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p style="margin-left: 50px"><img src="{% static 'image/liepin.png' %}" alt=""></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </ul>
+        </div>
+    </nav>
+    <!-- ------------------------------------------------------------------------ -->
+    <!-- 栅格系统 -->
+    <!-- 轮播 -->
+    <div id="myCarousel" class="carousel slide">
+        <!-- 轮播（Carousel）指标 -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <img src="{% static 'image/logo1.jpg' %}" alt="First slide" width="100%">
+                <div class="carousel-caption">习大大到访</div>
+            </div>
+            <div class="item">
+                <img src="{% static 'image/logo1.jpg' %}" alt="Second slide" height="509px;" width="1920px">
+                <div class="carousel-caption">美女和机器人</div>
+            </div>
+            <div class="item">
+                <img src="{% static 'image/logo1.jpg' %}" alt="Third slide" width="100%">
+                <div class="carousel-caption">乌镇互联网</div>
+            </div>
+        </div>
+        <!-- 轮播（Carousel）导航 -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <!-- ----------------------------------------------------------------- -->
+    <div>
+        <ul class="list-group">
+            <li class="list-group-item"
+                style="margin-left:40px;float: left;font-size: 20px;color: #ec971f;border: transparent">| IT·互联网
+            </li>
+            <li class="list-group-item"
+                style="margin-left:70px;float: left;font-size: 20px;color: #ec971f;border: transparent">| 房地产
+            </li>
+            <li class="list-group-item"
+                style="margin-left:70px;float: left;font-size: 20px;color: #ec971f;border: transparent">| 金 融
+            </li>
+            <li class="list-group-item"
+                style="margin-left:70px;float: left;font-size: 20px;color: #ec971f;border: transparent">| 消费品
+            </li>
+            <li class="list-group-item"
+                style="margin-left:70px;float: left;font-size: 20px;color: #ec971f;border: transparent">| 汽车·制造
+            </li>
+            <li class="list-group-item"
+                style="margin-left:70px;float: left;font-size: 20px;color: #ec971f;border: transparent">| 医疗·化工
+            </li>
+        </ul>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <hr>
+            <!-- 列表组 -->
+            <ul class="list-group">
+                <li class="list-group-item"><h2 style="color: #31b0d5"> @ IT·互联网</h2></li>
+                <li class="list-group-item">
+                    <a href="http://baidu.com">Java</a>
+                    <a href="" style="padding-left: 80px">产品经理</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://baidu.com">Python</a>
+                    <a href="" style="padding-left: 66px">iOS</a>
+                </li>
+                <li class="list-group-item"><a href="#">PHP <a href="" style="padding-left: 80px">Android</a></a></li>
+                <li class="list-group-item"><a href="#">UI设计师 </a><a href="" style="padding-left: 55px">Html5</a></li>
+                <li class="list-group-item">
+                    <a href="#">小米 </a>
+                    <a href="" style="padding-left: 40px">华为</a>
+                    <a href="" style="padding-left: 40px">迅雷</a><br><br>
+                    <a href="#">京东 </a>
+                    <a href="" style="padding-left: 40px">腾讯</a>
+                    <a href="" style="padding-left: 40px">人人公司</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="col-md-6" style="float: left">
+                <ul class="list-group ">
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m1.png' %}" alt="" style="width: 80%"></div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">云计算解决方案经理</a></li>
+                            <li class="list-unstyled">14-24万 杭州</li>
+                            <li class="list-unstyled"><a href="" style="color: black">中国联合网络通信有限公司杭州</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m22.png' %}" alt="" style="width: 80%">
+                        </div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">苏宁大类目运营中心总监</a></li>
+                            <li class="list-unstyled">面议南京</li>
+                            <li class="list-unstyled"><a href="" style="color: black">苏宁易购</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m3.jpg' %}" alt="" style="width: 80%"></div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">高级java工程师</a></li>
+                            <li class="list-unstyled">24-36万北京-海淀区</li>
+                            <li class="list-unstyled"><a href="" style="color: black">三平伟业(北京)投资管理有限公司</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                </ul>
+            </div>
+            <div class="col-md-6" style="float: left">
+                <ul class="list-group ">
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m4.png' %}" alt="" style="width: 80%"></div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">通信网络JAVA开发工程师</a></li>
+                            <li class="list-unstyled">22-38万北京</li>
+                            <li class="list-unstyled"><a href="" style="color: black">中国移动通信有限公司研究院</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m5.png' %}" alt="" style="width: 80%"></div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">Senior Software Engineer</a>
+                            </li>
+                            <li class="list-unstyled">面议广州-天河区</li>
+                            <li class="list-unstyled"><a href="" style="color: black">汇丰软件</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m6.png' %}" alt="" style="width: 80%"></div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">Principal Java Engineering</a>
+                            </li>
+                            <li class="list-unstyled">39-60万上海</li>
+                            <li class="list-unstyled"><a href="" style="color: black">韩领科技</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <hr>
+            <!-- 列表组 -->
+
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h2 style="color: orangered"> @
+                    房地产</h2>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://baidu.com">土建工程师</a>
+                    <a href="" style="padding-left: 60px">项目工程师</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="http://baidu.com">钢结构设计</a>
+                    <a href="" style="padding-left: 60px">结构工程师</a>
+                </li>
+                <li class="list-group-item"><a href="#">室内设计 <a href="" style="padding-left: 70px">景观设计 </a></a></li>
+                <li class="list-group-item"><a href="#">项目经理</a><a href="" style="padding-left: 75px">建筑设计师</a></li>
+                <li class="list-group-item">
+                    <a href="#">鲁能集团 </a>
+                    <a href="" style="padding-left: 25px">欣心向融</a>
+                    <a href="" style="padding-left: 25px">桑泰地产</a><br><br>
+                    <a href="#">万科房产 </a>
+                    <a href="" style="padding-left: 25px">远洋地产 </a>
+                    <a href="" style="padding-left: 25px">绿地集团</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div class="col-md-6" style="float: left">
+                <ul class="list-group ">
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m7.png' %}" alt="" style="width: 80%"></div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">高级精装工程主管</a></li>
+                            <li class="list-unstyled">面议上海-长宁区</li>
+                            <li class="list-unstyled"><a href="" style="color: black">上海融创房地产开发集团有限公司</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m8.png' %}" alt="" style="width: 80%"></div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">建筑设计经理</a></li>
+                            <li class="list-unstyled">24-30万广州-天河区</li>
+                            <li class="list-unstyled"><a href="" style="color: black">合生创展集团有限公司</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m9.png' %}" alt="" style="width: 80%"></div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">土地拓展总监</a></li>
+                            <li class="list-unstyled">46-78万北京</li>
+                            <li class="list-unstyled"><a href="" style="color: black">当代节能置业</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                </ul>
+            </div>
+            <div class="col-md-6" style="float: left">
+                <ul class="list-group ">
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m10.png' %}" alt="" style="width: 80%">
+                        </div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">法务专业副总监/总监</a></li>
+                            <li class="list-unstyled">36-54万杭州</li>
+                            <li class="list-unstyled"><a href="" style="color: black">宋都股份</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m11.jpg' %}" alt="" style="width: 80%">
+                        </div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">拓展总监/经理（物业）</a></li>
+                            <li class="list-unstyled">18-24万广州</li>
+                            <li class="list-unstyled"><a href="" style="color: black">广东奥园商业物业管理有限公司</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                    <li class="list-unstyled" style="padding-top: 10px">
+                        <div style="float: left"><img src="{% static 'image/m12.png' %}" alt="" style="width: 80%">
+                        </div>
+                        <ul>
+                            <li class="list-unstyled"><a href="" style="font-size: 18px">项目研发经理（南京）</a></li>
+                            <li class="list-unstyled">面议南京</li>
+                            <li class="list-unstyled"><a href="" style="color: black">龙湖集团</a></li>
+                        </ul>
+                    </li>
+                    <hr>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-9">
+            <h2 style="color: red">|<a href="" style="color: black;">&nbsp;&nbsp;名企职位</a></h2>
+            <div class="col-sm-6 col-md-4">
+                <a href="#" class="thumbnail">
+                    <img src="{% static 'image/b1.png' %}" alt="通用的占位符缩略图">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <a href="#" class="thumbnail">
+                    <img src="{% static 'image/b2.png' %}" alt="通用的占位符缩略图">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <a href="#" class="thumbnail">
+                    <img src="{% static 'image/b3.png' %}" alt="通用的占位符缩略图">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <a href="#" class="thumbnail">
+                    <img src="{% static 'image/b4.png' %}" alt="通用的占位符缩略图">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <a href="#" class="thumbnail">
+                    <img src="{% static 'image/b5.png' %}" alt="通用的占位符缩略图">
+                </a>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <a href="#" class="thumbnail">
+                    <img src="{% static 'image/b6.jpg' %}" alt="通用的占位符缩略图">
+                </a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <h2 style="color: red">|<a href="" style="color: black;">&nbsp;&nbsp;热门职位</a></h2>
+            <!-- 列表组 -->
+            <ul class="list-group">
+                <!-- 缩写 -->
+                <li class="list-group-item"><a href="#">商业服务</a></li>
+                <li class="list-group-item"><span class="badge">8</span><a href="#">教育/培训</a></li>
+                <li class="list-group-item"><a href="#">房地产/建筑业</a></li>
+                <li class="list-group-item">
+                    <!-- 徽章 -->
+                    <span class="badge">2</span>
+                    <a href="#">广告/媒体</a>
+                </li>
+                <li class="list-group-item"><a href="#"> IT/互联网/通信/电子</a></li>
+            </ul>
+        </div>
+    </div>
+    <hr>
+    <p>
+        热门城市：
+        <a href="">北京招聘</a>
+        <a href="">上海招聘</a>
+        <a href="">广州招聘</a>
+        <a href="">深圳招聘</a>
+        <a href="">南京招聘</a>
+        <a href="">杭州招聘</a>
+        <a href="">天津招聘</a>
+        <a href="">青岛招聘</a>
+        <a href="">成都招聘</a>
+        <a href="">重庆招聘</a>
+        <a href="">武汉招聘</a>
+        <a href="">更多城市招聘</a>
+    </p>
+</div>
+<hr>
+<p style="text-align: center">京ICP备09083200号 合字B2-20160007 人才服务许可证:120116174002号 京公网安备 11010502035189号</p>
+<p style="text-align: center">Copyright © 2006-2018 liepin.com All Rights Reserved</p>
+</body>
+</html>
